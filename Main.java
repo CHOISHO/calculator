@@ -1,42 +1,83 @@
 import java.io.*;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(args));
+        // TODO: 명령행 인자로 받도록 수정
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        if (args.length == 0) {
-            System.out.println("Please provide a name as a command-line argument.");
-            return;
-        }
+        String firstOperand = getFirstOperand(reader);
+        String operation = getOperation(reader);
+        String secondOperand = getSecondOperand(reader);
 
-        String name = args[0];
+        System.err.println(firstOperand);
+        System.err.println(operation);
+        System.err.println(secondOperand);
+
+        // TODO: dart 계산기 argument 로 전달 
+        return;
+    }
+
+    private static String getFirstOperand(BufferedReader reader) {
+        System.out.print("Enter first operand: ");
 
         try {
-            // Dart 프로세스를 실행
-            ProcessBuilder processBuilder = new ProcessBuilder("dart", "bin/cli.dart");
-            processBuilder.redirectErrorStream(true);
-
-            // 프로세스 시작
-            Process process = processBuilder.start();
-
-            // 프로세스의 입력 스트림을 얻음
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-            writer.write(name + "\n");
-            writer.flush();
-
-            // 프로세스의 출력 스트림을 읽음
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            String firstOperand = reader.readLine();
+            if (firstOperand != null) {
+                return firstOperand;
+            } else {
+                // TODO: 숫자 유효성 검사 처리
+                return "0";
             }
-
-            // 프로세스 종료를 기다림
-            int exitCode = process.waitFor();
-            System.out.println("Exited with code: " + exitCode);
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
+            // TODO: 에러 처리 
             e.printStackTrace();
+            return "0";
+        }
+    }
+    
+    private static String getSecondOperand(BufferedReader reader) {
+        System.out.print("Enter second operand: ");
+
+        try {
+            String secondOperand = reader.readLine();
+            if (secondOperand != null) {
+                return secondOperand;
+            } else {
+                // TODO: 숫자 유효성 검사 처리
+                return "0";
+            }
+        } catch (IOException e) {
+            // TODO: 에러 처리 
+            e.printStackTrace();
+            return "0";
+        }
+    }
+
+    private static String getOperation(BufferedReader reader) {
+        System.out.println("Please select an option:");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        /* TODO:
+            5. Trigonometric functions
+            6. Calculus
+            7. logarithmic function
+         */  
+
+         try {
+            String Operation = reader.readLine();
+            if (Operation != null) {
+                return Operation;
+            } else {
+                // TODO: 옵션아닌 문자 입력시 처리 
+                // TODO: 빈 값 입력시 처리 
+                return "0";
+            }
+        } catch (IOException e) {
+            // TODO: 에러 처리 
+            e.printStackTrace();
+            return "0";
         }
     }
 }
