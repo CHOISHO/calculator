@@ -1,11 +1,17 @@
-import 'dart:io';
+import 'package:cli/feature/calculator.dart';
 
-void main() {
-  String? name = stdin.readLineSync();
+void main(List<String> arguments) {
+  try {
+    if (arguments.isNotEmpty) {
+      Calculator calculator = Calculator();
 
-  if (name != null) {
-    print('Hello, $name!');
-  } else {
-    print('Hello, stranger!');
+      String result = calculator.calculate(arguments);
+
+      print(result);
+    } else {
+      throw '전달 받은 인자가 없습니다.';
+    }
+  } catch (e) {
+    print(e);
   }
 }
