@@ -53,7 +53,7 @@ public class Main {
     }
 
     private static String getOperation(BufferedReader reader) {
-        System.out.println("Please select an option:");
+        System.out.println("Please select an operation:");
         System.out.println("1. Addition");
         System.out.println("2. Subtraction");
         System.out.println("3. Multiplication");

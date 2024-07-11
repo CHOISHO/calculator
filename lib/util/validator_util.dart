@@ -1,4 +1,4 @@
-import 'package:cli/enum/operation_enum.dart';
+import 'package:calculator/enum/operation_enum.dart';
 
 class Validator {
   bool validateArguments(List<String> arguments) {

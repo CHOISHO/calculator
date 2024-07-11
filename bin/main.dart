@@ -1,4 +1,4 @@
-import 'package:cli/feature/calculator.dart';
+import 'package:calculator/feature/calculator.dart';
 
 void main(List<String> arguments) {
   try {

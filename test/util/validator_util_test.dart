@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:cli/util/validator_util.dart';
+import 'package:calculator/util/validator_util.dart';
 
 void main() {
   Validator validator = Validator();

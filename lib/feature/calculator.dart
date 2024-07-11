@@ -1,5 +1,5 @@
-import 'package:cli/enum/operation_enum.dart';
-import 'package:cli/util/validator_util.dart';
+import 'package:calculator/enum/operation_enum.dart';
+import 'package:calculator/util/validator_util.dart';
 
 class Calculator {
   late final Calculator calculator;
