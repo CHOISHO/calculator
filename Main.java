@@ -83,8 +83,8 @@ public class Main {
     private static void startCalculator(String[] arguments) {
         try {
             // Dart 프로세스를 실행
-            ProcessBuilder processBuilder = new ProcessBuilder("dart", "bin/main.dart");
-            
+            ProcessBuilder processBuilder = new ProcessBuilder("C:\\tools\\dart-sdk\\bin\\dart.exe", "bin/main.dart");
+
             processBuilder.command().addAll(List.of(arguments));
 
             processBuilder.redirectErrorStream(true);
