@@ -8,7 +8,11 @@
     - [TODO] Calculus
     - [TODO] logarithmic function    
 
-### Usage
+### Developent
     dart pub get
+    dart pub global activate rps
+    rps run watch
+    
+### Usage
     javac Main.java
-    java Main
+    java Main <firstOperand> <operation> <secondOperand>
