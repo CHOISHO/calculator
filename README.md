@@ -15,4 +15,4 @@
     
 ### Usage
     javac Main.java
-    java Main <firstOperand> <operation> <secondOperand>
+    java Main
