@@ -2,7 +2,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import 'package:cli/calculator.dart';
+import 'package:cli/feature/calculator.dart';
 
 @GenerateNiceMocks([MockSpec<Calculator>()])
 import 'calculator_test.mocks.dart';
@@ -13,7 +13,7 @@ void main() {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate([1, 1, 1]);
+      calculator.calculate(['1', '1', '1']);
 
       verify(mockCalculator.add(1, 1)).called(1);
     });
@@ -22,7 +22,7 @@ void main() {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate([1, 2, 1]);
+      calculator.calculate(['1', '2', '1']);
 
       verify(mockCalculator.subtract(1, 1)).called(1);
     });
@@ -31,7 +31,7 @@ void main() {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate([1, 3, 1]);
+      calculator.calculate(['1', '3', '1']);
 
       verify(mockCalculator.multiply(1, 1)).called(1);
     });
@@ -40,7 +40,7 @@ void main() {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate([1, 4, 1]);
+      calculator.calculate(['1', '4', '1']);
 
       verify(mockCalculator.divide(1, 1)).called(1);
     });

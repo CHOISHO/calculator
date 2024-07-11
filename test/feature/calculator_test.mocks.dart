@@ -3,8 +3,9 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:cli/calculator.dart' as _i2;
+import 'package:cli/feature/calculator.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -56,17 +57,29 @@ class MockCalculator extends _i1.Mock implements _i2.Calculator {
       );
 
   @override
-  int calculate(List<num>? arguments) => (super.noSuchMethod(
+  String calculate(List<String>? arguments) => (super.noSuchMethod(
         Invocation.method(
           #calculate,
           [arguments],
         ),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+        returnValue: _i3.dummyValue<String>(
+          this,
+          Invocation.method(
+            #calculate,
+            [arguments],
+          ),
+        ),
+        returnValueForMissingStub: _i3.dummyValue<String>(
+          this,
+          Invocation.method(
+            #calculate,
+            [arguments],
+          ),
+        ),
+      ) as String);
 
   @override
-  int add(
+  num add(
     dynamic a,
     dynamic b,
   ) =>
@@ -80,5 +93,56 @@ class MockCalculator extends _i1.Mock implements _i2.Calculator {
         ),
         returnValue: 0,
         returnValueForMissingStub: 0,
-      ) as int);
+      ) as num);
+
+  @override
+  num subtract(
+    dynamic a,
+    dynamic b,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #subtract,
+          [
+            a,
+            b,
+          ],
+        ),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as num);
+
+  @override
+  num multiply(
+    dynamic a,
+    dynamic b,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #multiply,
+          [
+            a,
+            b,
+          ],
+        ),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as num);
+
+  @override
+  num divide(
+    dynamic a,
+    dynamic b,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #divide,
+          [
+            a,
+            b,
+          ],
+        ),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as num);
 }
