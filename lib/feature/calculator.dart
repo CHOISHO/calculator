@@ -21,9 +21,6 @@ class Calculator {
     Operation operation = Operation.getByValue(parsedArguments[1]);
     num secondOperand = parsedArguments[2];
 
-    print(
-        'firstOperand: $firstOperand, operation: $operation, secondOperand: $secondOperand');
-
     num? result;
 
     switch (operation) {
