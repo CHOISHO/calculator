@@ -9,13 +9,6 @@ enum Operation {
   final int value;
   final String label;
 
-  factory Operation.getByValue(num value) {
-    return Operation.values.firstWhere(
-      (operation) => operation.value == value,
-      orElse: () => Operation.undefined,
-    );
-  }
-
   factory Operation.getValueFromArgument(String argument) {
     switch (argument) {
       case '+':
