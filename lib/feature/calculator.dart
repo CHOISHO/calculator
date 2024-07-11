@@ -15,11 +15,9 @@ class Calculator {
       throw '인자의 형식이 올바르지 않습니다.';
     }
 
-    List<num> parsedArguments = arguments.map((e) => num.parse(e)).toList();
-
-    num firstOperand = parsedArguments[0];
-    Operation operation = Operation.getByValue(parsedArguments[1]);
-    num secondOperand = parsedArguments[2];
+    num firstOperand = num.parse(arguments[0]);
+    Operation operation = Operation.getValueFromArgument(arguments[1]);
+    num secondOperand = num.parse(arguments[2]);
 
     print(
         'firstOperand: $firstOperand, operation: $operation, secondOperand: $secondOperand');

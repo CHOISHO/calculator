@@ -13,34 +13,34 @@ void main() {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate(['1', '1', '1']);
+      calculator.calculate(['1', '+', '1']);
 
       verify(mockCalculator.add(1, 1)).called(1);
     });
 
-    test("2 연산자가 전달되면 subtract 메소드가 호출된다.", () {
+    test("- 연산자가 전달되면 subtract 메소드가 호출된다.", () {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate(['1', '2', '1']);
+      calculator.calculate(['1', '-', '1']);
 
       verify(mockCalculator.subtract(1, 1)).called(1);
     });
 
-    test("3 연산자가 전달되면 multiply 메소드가 호출된다.", () {
+    test("* 연산자가 전달되면 multiply 메소드가 호출된다.", () {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate(['1', '3', '1']);
+      calculator.calculate(['1', '*', '1']);
 
       verify(mockCalculator.multiply(1, 1)).called(1);
     });
 
-    test("4 연산자가 전달되면 divide 메소드가 호출된다.", () {
+    test("/ 연산자가 전달되면 divide 메소드가 호출된다.", () {
       var mockCalculator = MockCalculator();
       var calculator = Calculator(calculator: mockCalculator);
 
-      calculator.calculate(['1', '4', '1']);
+      calculator.calculate(['1', '/', '1']);
 
       verify(mockCalculator.divide(1, 1)).called(1);
     });
