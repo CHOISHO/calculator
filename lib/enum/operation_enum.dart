@@ -15,4 +15,19 @@ enum Operation {
       orElse: () => Operation.undefined,
     );
   }
+
+  factory Operation.getValueFromArgument(String argument) {
+    switch (argument) {
+      case '+':
+        return Operation.add;
+      case '-':
+        return Operation.subtract;
+      case '*':
+        return Operation.multiply;
+      case '/':
+        return Operation.divide;
+      default:
+        return Operation.undefined;
+    }
+  }
 }
