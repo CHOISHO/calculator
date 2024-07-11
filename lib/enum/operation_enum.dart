@@ -1,12 +1,13 @@
 enum Operation {
-  add(1),
-  subtract(2),
-  multiply(3),
-  divide(4),
-  undefined(-1);
+  add(1, 'Addition'),
+  subtract(2, 'Subtraction'),
+  multiply(3, 'Multiplication'),
+  divide(4, 'Division'),
+  undefined(-1, 'Undefined');
 
-  const Operation(this.value);
+  const Operation(this.value, this.label);
   final int value;
+  final String label;
 
   factory Operation.getByValue(num value) {
     return Operation.values.firstWhere(
