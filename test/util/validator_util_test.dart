@@ -63,11 +63,25 @@ void main() {
         false,
       );
     });
+
+    test('a.1 는 false 를 반환한다.', () {
+      expect(
+        validator.validateOperand('a.1'),
+        false,
+      );
+    });
+
+    test('1.a 는 false 를 반환한다.', () {
+      expect(
+        validator.validateOperand('1.a'),
+        false,
+      );
+    });
   });
 
   group('Validator validateOperation:', () {
-    test('1 을 인자로 전달하면 true 를 반환한다.', () {
-      String argument = '1';
+    test('+ 를 인자로 전달하면 true 를 반환한다.', () {
+      String argument = '+';
 
       expect(
         validator.validateOperation(argument),
@@ -75,8 +89,35 @@ void main() {
       );
     });
 
-    test('1.1 을 인자로 전달하면 true 를 반환한다.', () {
-      String argument = '1.1';
+    test('- 를 인자로 전달하면 true 를 반환한다.', () {
+      String argument = '-';
+
+      expect(
+        validator.validateOperation(argument),
+        true,
+      );
+    });
+
+    test('* 를 인자로 전달하면 true 를 반환한다.', () {
+      String argument = '*';
+
+      expect(
+        validator.validateOperation(argument),
+        true,
+      );
+    });
+
+    test('/ 를 인자로 전달하면 true 를 반환한다.', () {
+      String argument = '/';
+
+      expect(
+        validator.validateOperation(argument),
+        true,
+      );
+    });
+
+    test('a 를 인자로 전달하면 false 를 반환한다.', () {
+      String argument = 'a';
 
       expect(
         validator.validateOperation(argument),
@@ -86,7 +127,7 @@ void main() {
   });
 
   group('Validator validateArguments:', () {
-    test("문자열 인자는 false 를 반환한다.", () {
+    test("['a', 'b', 'a'] 인자는 false 를 반환한다.", () {
       var arguments = ['a', 'b', 'a'];
 
       var result = validator.validateArguments(arguments);
@@ -94,16 +135,48 @@ void main() {
       expect(result, false);
     });
 
-    test("정수 인자는 true 를 반환한다.", () {
+    test("['1', '1', '1'] 인자는 false 를 반환한다.", () {
       var arguments = ['1', '1', '1'];
+
+      var result = validator.validateArguments(arguments);
+
+      expect(result, false);
+    });
+
+    test("['1.1', '1', '1.2'] 인자는 false 를 반환한다.", () {
+      var arguments = ['1.1', '1', '1.2'];
+
+      var result = validator.validateArguments(arguments);
+
+      expect(result, false);
+    });
+
+    test("['1', '+', '1'] 인자는 true 를 반환한다.", () {
+      var arguments = ['1', '+', '1'];
 
       var result = validator.validateArguments(arguments);
 
       expect(result, true);
     });
 
-    test("실수 인자는 true 를 반환한다.", () {
-      var arguments = ['1.1', '1', '1.2'];
+    test("['1', '-', '1'] 인자는 true 를 반환한다.", () {
+      var arguments = ['1', '-', '1'];
+
+      var result = validator.validateArguments(arguments);
+
+      expect(result, true);
+    });
+
+    test("['1', '*', '1'] 인자는 true 를 반환한다.", () {
+      var arguments = ['1', '*', '1'];
+
+      var result = validator.validateArguments(arguments);
+
+      expect(result, true);
+    });
+
+    test("['1', '/', '1'] 인자는 true 를 반환한다.", () {
+      var arguments = ['1', '/', '1'];
 
       var result = validator.validateArguments(arguments);
 
