@@ -30,7 +30,7 @@ class Validator {
   bool validateOperation(String value) {
     bool isValid = false;
 
-    for (var operation in Operation.values) {
+    for (var operation in OperationEnum.values) {
       if (operation.value == num.parse(value)) {
         isValid = true;
         break;

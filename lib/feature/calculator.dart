@@ -1,6 +1,47 @@
 import 'package:calculator/enum/operation_enum.dart';
 import 'package:calculator/util/validator_util.dart';
 
+abstract class Operation {
+  num execute(num a, num b);
+}
+
+class AddOperation implements Operation {
+  @override
+  num execute(num a, num b) => a + b;
+}
+
+class SubtractOperation implements Operation {
+  @override
+  num execute(num a, num b) => a - b;
+}
+
+class MultiplyOperation implements Operation {
+  @override
+  num execute(num a, num b) => a * b;
+}
+
+class DivideOperation implements Operation {
+  @override
+  num execute(num a, num b) => a / b;
+}
+
+class OperationFactory {
+  static Operation getOperation(OperationEnum operation) {
+    switch (operation) {
+      case OperationEnum.add:
+        return AddOperation();
+      case OperationEnum.subtract:
+        return SubtractOperation();
+      case OperationEnum.multiply:
+        return MultiplyOperation();
+      case OperationEnum.divide:
+        return DivideOperation();
+      default:
+        throw Exception('Invalid operation');
+    }
+  }
+}
+
 class Calculator {
   late final Calculator calculator;
 
@@ -18,50 +59,13 @@ class Calculator {
     List<num> parsedArguments = arguments.map((e) => num.parse(e)).toList();
 
     num firstOperand = parsedArguments[0];
-    Operation operation = Operation.getByValue(parsedArguments[1]);
+    OperationEnum parsedOperation =
+        OperationEnum.getByValue(parsedArguments[1]);
     num secondOperand = parsedArguments[2];
 
-    num? result;
+    Operation operation = OperationFactory.getOperation(parsedOperation);
+    num result = operation.execute(firstOperand, secondOperand);
 
-    switch (operation) {
-      case Operation.add:
-        result = calculator.add(firstOperand, secondOperand);
-        break;
-      case Operation.subtract:
-        result = calculator.subtract(firstOperand, secondOperand);
-        break;
-      case Operation.multiply:
-        result = calculator.multiply(firstOperand, secondOperand);
-        break;
-      case Operation.divide:
-        result = calculator.divide(firstOperand, secondOperand);
-        break;
-      default:
-        throw "올바르지 않은 연산자 입니다.: $operation";
-    }
-
-    return '${operation.label}($firstOperand, $secondOperand) result: $result';
+    return '${parsedOperation.label}($firstOperand, $secondOperand) result: $result';
   }
-
-  num add(a, b) {
-    return a + b;
-  }
-
-  num subtract(a, b) {
-    return a - b;
-  }
-
-  num multiply(a, b) {
-    return a * b;
-  }
-
-  num divide(a, b) {
-    return a / b;
-  }
-
-  /* TODO:
-  - Trigonometric functions
-  - Calculus
-  - logarithmic function
-  */
 }
